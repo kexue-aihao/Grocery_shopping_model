@@ -95,12 +95,12 @@ jobs:
 
       - name: Build Android APK
         working-directory: android_flutter/grocery_bmi_app
-        run: flutter build apk --release
+        run: flutter build apk --debug
 
       - name: Collect APK
         run: |
           mkdir -p dist/android
-          cp android_flutter/grocery_bmi_app/build/app/outputs/flutter-apk/app-release.apk dist/android/grocery-bmi-android.apk
+          cp android_flutter/grocery_bmi_app/build/app/outputs/flutter-apk/app-debug.apk dist/android/grocery-bmi-android.apk
 
       - name: Upload Android artifact
         uses: actions/upload-artifact@v4
@@ -150,4 +150,5 @@ jobs:
             - Android Flutter APK：grocery-bmi-android.apk
 
             预算方式：手动输入每日预算生成菜品样式。
+
 

@@ -71,7 +71,8 @@ assert.match(flutterMain, /MarketPrice/, 'Flutter app should parse market retail
 assert.match(flutterMain, /estimateDishCost/, 'Flutter app should estimate dish cost from ingredient retail prices');
 
 const workflow = await readFile(path.join(root, '.github/workflows/build-release.yml'), 'utf8');
-assert.match(workflow, /flutter build apk --release/, 'GitHub workflow should build Android APK');
+assert.match(workflow, /flutter build apk --debug/, 'GitHub workflow should build Android APK');
 assert.match(workflow, /ncipollo\/release-action@v1/, 'GitHub workflow should create a Release');
 console.log('Project structure verified for units, regional cuisines, BMI and Windows + Android workflow.');
+
 
