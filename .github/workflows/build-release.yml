@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       release_tag:
-        description: 'Release tag, e.g. v1.1.0. Leave empty to use manual-${{ github.run_number }}.'
+        description: 'Release tag, e.g. v1.1.1. Leave empty to use manual-${{ github.run_number }}.'
         required: false
         default: ''
   push:
@@ -50,9 +50,6 @@ jobs:
   android:
     name: Build Android Flutter APK
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: android_flutter/grocery_bmi_app
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,6 +59,9 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Export shared data
+        run: node scripts/export-data.mjs
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -69,17 +69,15 @@ jobs:
           flutter-version: '3.24.5'
           cache: true
 
-      - name: Export shared data
-        working-directory: .
-        run: node scripts/export-data.mjs
-
       - name: Create Android platform files
+        working-directory: android_flutter/grocery_bmi_app
         run: flutter create --platforms=android --org com.grocerybmi --project-name grocery_bmi_app .
 
-      - name: Restore Flutter app sources after platform generation
-        run: git checkout -- pubspec.yaml lib/main.dart analysis_options.yaml assets
+      - name: Restore tracked Flutter app sources
+        run: git checkout -- android_flutter/grocery_bmi_app/pubspec.yaml android_flutter/grocery_bmi_app/lib/main.dart android_flutter/grocery_bmi_app/analysis_options.yaml android_flutter/grocery_bmi_app/assets
 
       - name: Apply Android launcher logo
+        working-directory: android_flutter/grocery_bmi_app
         run: |
           for density in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
             mkdir -p android/app/src/main/res/mipmap-$density
@@ -87,18 +85,21 @@ jobs:
           done
 
       - name: Resolve Flutter dependencies
+        working-directory: android_flutter/grocery_bmi_app
         run: flutter pub get
 
       - name: Analyze Flutter project
+        working-directory: android_flutter/grocery_bmi_app
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
 
       - name: Build Android APK
+        working-directory: android_flutter/grocery_bmi_app
         run: flutter build apk --release
 
       - name: Collect APK
         run: |
-          mkdir -p ../../dist/android
-          cp build/app/outputs/flutter-apk/app-release.apk ../../dist/android/grocery-bmi-android.apk
+          mkdir -p dist/android
+          cp android_flutter/grocery_bmi_app/build/app/outputs/flutter-apk/app-release.apk dist/android/grocery-bmi-android.apk
 
       - name: Upload Android artifact
         uses: actions/upload-artifact@v4
@@ -145,6 +146,3 @@ jobs:
             - Android Flutter APK：grocery-bmi-android.apk
 
             预算方式：手动输入每日预算生成菜品样式。
-
-
-
