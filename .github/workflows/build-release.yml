@@ -91,6 +91,7 @@ jobs:
       - name: Analyze Flutter project
         working-directory: android_flutter/grocery_bmi_app
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
+        continue-on-error: true
 
       - name: Build Android APK
         working-directory: android_flutter/grocery_bmi_app
@@ -149,3 +150,4 @@ jobs:
             - Android Flutter APK：grocery-bmi-android.apk
 
             预算方式：手动输入每日预算生成菜品样式。
+

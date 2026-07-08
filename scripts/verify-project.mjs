@@ -66,6 +66,7 @@ assert.match(flutterMain, /DropdownButtonFormField<String>/, 'Flutter app should
 assert.match(flutterMain, /🌅 早餐/, 'Flutter app should render breakfast');
 assert.match(flutterMain, /Image\.asset\('assets\/logo\.png'/, 'Flutter UI should display logo');
 assert.match(flutterMain, /region: _region/, 'Flutter generation should pass selected region');
+assert.doesNotMatch(flutterMain, /\\?\\.\\d/, 'Dart source should not contain accidental null-aware decimal syntax such as ?.25');
 assert.match(flutterMain, /MarketPrice/, 'Flutter app should parse market retail price data');
 assert.match(flutterMain, /estimateDishCost/, 'Flutter app should estimate dish cost from ingredient retail prices');
 
@@ -73,3 +74,4 @@ const workflow = await readFile(path.join(root, '.github/workflows/build-release
 assert.match(workflow, /flutter build apk --release/, 'GitHub workflow should build Android APK');
 assert.match(workflow, /ncipollo\/release-action@v1/, 'GitHub workflow should create a Release');
 console.log('Project structure verified for units, regional cuisines, BMI and Windows + Android workflow.');
+
