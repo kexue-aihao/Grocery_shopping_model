@@ -1,0 +1,29 @@
+﻿{
+  "name": "grocery-bmi-shopping-model",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Windows + Android 的买菜 BMI 选购软件，支持手动预算生成菜品样式",
+  "scripts": {
+    "build:web": "node scripts/build.mjs",
+    "test": "node scripts/test.mjs",
+    "export:data": "node scripts/export-data.mjs",
+    "generate:logo": "powershell -ExecutionPolicy Bypass -File scripts/generate-logo.ps1",
+    "build:windows": "npm.cmd run export:data && dotnet publish desktop/GroceryBmi.App/GroceryBmi.App.csproj -c Release -o dist/software/windows",
+    "verify:windows": "node scripts/verify-windows-build.mjs",
+    "verify:project": "node scripts/verify-project.mjs",
+    "build": "npm.cmd run test && npm.cmd run build:web && npm.cmd run build:windows && npm.cmd run verify:windows && npm.cmd run verify:project",
+    "compile": "npm.cmd run build",
+    "run:windows": "dotnet run --project desktop/GroceryBmi.App/GroceryBmi.App.csproj"
+  },
+  "keywords": [
+    "grocery",
+    "bmi",
+    "windows",
+    "android",
+    "flutter",
+    "shopping-list",
+    "meal-planner"
+  ],
+  "license": "MIT"
+}

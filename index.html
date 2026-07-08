@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#16a34a" />
+    <meta name="description" content="买菜 BMI 选购模型：按手动价格预算生成中晚餐不重复的健康购物清单。" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <title>买菜 BMI 选购模型</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <nav class="topbar" aria-label="页面导航">
+          <div class="brand"><span>🥗</span><b>Grocery BMI</b></div>
+          <div class="system-badges" aria-label="兼容系统">
+            <span>Windows</span><span>Android</span><span>Flutter</span>
+          </div>
+        </nav>
+        <section class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">BMI-aware grocery planner</p>
+            <h1>买菜 BMI 选购模型</h1>
+            <p>根据身高体重计算 BMI，为每道菜生成 BMI 适配值，并按手动预算自动生成早餐、中餐与晚餐不重复的选购列表。</p>
+            <div class="hero-actions">
+              <button id="regen" class="primary-btn" type="button">重新生成方案</button>
+              <button id="printList" class="ghost-btn" type="button">打印购物清单</button>
+            </div>
+            <div class="hero-footnote">
+              <strong id="heroBudget">3天 · 1人 · 手动预算</strong>
+              <span id="compatLine">Windows / Android 软件模型</span>
+            </div>
+          </div>
+          <aside class="control-panel" aria-label="BMI 与预算设置">
+            <div class="panel-title">
+              <span>⚙️</span>
+              <div><h2>生成参数</h2><p>输入体型与用餐人数</p></div>
+            </div>
+            <div class="field-grid">
+              <label>身高 <span class="input-with-unit"><input id="height" type="number" min="120" max="220" value="170" /><em>cm</em></span></label>
+              <label>体重 <span class="input-with-unit"><input id="weight" type="number" min="30" max="180" value="65" /><em>kg</em></span></label>
+              <label>人数 <span class="input-with-unit"><input id="people" type="number" min="1" max="6" value="1" /><em>人</em></span></label>
+              <label>天数 <span class="input-with-unit"><input id="days" type="number" min="1" max="7" value="3" /><em>天</em></span></label>
+            </div>
+            <div class="bmi-card">
+              <div><span>当前 BMI</span><strong id="bmiValue">--</strong></div>
+              <em id="bmiCategory">待输入</em>
+            </div>
+            <div class="bmi-bar" aria-hidden="true"><span id="bmiPointer"></span></div>
+            <p id="bmiAdvice" class="advice">请输入身高体重以生成个性化菜品适配值。</p>
+          </aside>
+        </section>
+      </header>
+
+      <main>
+        <section class="budget-section" aria-labelledby="budget-title">
+          <div class="section-heading">
+            <p class="eyebrow">Step budget</p>
+            <h2 id="budget-title">手动预算菜品选购列表</h2>
+            <p>输入每天价格预算后生成菜品样式，算法会优先选择预算接近、营养均衡、同日不重复的菜品组合。</p>
+          </div>
+          <div class="manual-budget-card">
+            <label>每日预算 <span class="input-with-unit"><input id="budgetInput" type="number" min="10" max="500" step="5" value="50" /><em>元/天</em></span></label>
+            <label>地区人群
+              <select id="regionSelect">
+                <option value="national">全国通用</option>
+                <option value="north">华北/东北</option>
+                <option value="east">华东/江浙沪</option>
+                <option value="south">华南/粤闽</option>
+                <option value="central">华中</option>
+                <option value="southwest">西南/川渝云贵</option>
+                <option value="northwest">西北</option>
+              </select>
+            </label>
+          </div>
+          <div id="summaryCards" class="summary-grid"></div>
+        </section>
+
+        <section class="layout-grid">
+          <div>
+            <div class="section-heading compact">
+              <p class="eyebrow">Meal plan</p>
+              <h2>每日中餐 / 晚餐</h2>
+            </div>
+            <div id="dailyPlans" class="daily-plans"></div>
+          </div>
+          <aside class="shopping-panel">
+            <div class="sticky-card">
+              <div class="shopping-total"><span>预计采购总价</span><strong id="grandTotal">¥0</strong></div>
+              <h3>合并购物清单</h3>
+              <ul id="shoppingList" class="shopping-list"></ul>
+              <p class="note">份量按人数累计；价格和营养为演示估算，实际采购以本地市场为准。</p>
+            </div>
+          </aside>
+        </section>
+
+        <section class="gallery-section" aria-labelledby="gallery-title">
+          <div class="section-heading">
+            <p class="eyebrow">Dish styles</p>
+            <h2 id="gallery-title">全网常见菜品样式池</h2>
+            <p>整合家常、川湘、粤式、江浙、轻食、汤羹等常见菜品风格，作为模型生成候选池。</p>
+          </div>
+          <div id="dishGallery" class="dish-gallery"></div>
+          <div class="source-box">
+            <span>灵感来源：</span><div id="sourceList"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
+
+
+
+

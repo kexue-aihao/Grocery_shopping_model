@@ -1,0 +1,3264 @@
+﻿export const sourceNotes = [
+  {
+    name: '下厨房 - 菜谱与家常菜灵感',
+    url: 'https://www.xiachufang.com/'
+  },
+  {
+    name: '美食天下 - 菜谱与菜系分类灵感',
+    url: 'https://www.meishichina.com/YuanLiao/'
+  },
+  {
+    name: '八大菜系资料 - 地区菜系与代表菜灵感',
+    url: 'https://baike.baidu.com/item/%E5%85%AB%E5%A4%A7%E8%8F%9C%E7%B3%BB'
+  }
+];
+
+export const regions = [
+  { id: 'national', name: '全国通用', hint: '兼顾南北大众口味' },
+  { id: 'north', name: '华北/东北', hint: '面食、粥、炖菜、酱香' },
+  { id: 'east', name: '华东/江浙沪', hint: '清淡鲜甜、汤羹、河鲜' },
+  { id: 'south', name: '华南/粤闽', hint: '肠粉、粥粉面、清蒸' },
+  { id: 'central', name: '华中', hint: '热干面、米粉、汤菜' },
+  { id: 'southwest', name: '西南/川渝云贵', hint: '米线、酸辣、麻辣' },
+  { id: 'northwest', name: '西北', hint: '牛羊肉、面食、胡辣汤' }
+];
+
+export const budgetTiers = [
+  { value: 30, label: '30 元', hint: '轻量家常 · 控制总价' },
+  { value: 50, label: '50 元', hint: '均衡两餐 · 蛋白升级' },
+  { value: 100, label: '100 元', hint: '丰盛组合 · 多菜多样' }
+];
+
+export const dishes = [
+  {
+    id: 'tomato-egg', name: '番茄炒蛋', style: '家常酸甜', cuisine: '家常', type: 'protein',
+    meals: ['lunch', 'dinner'], kcal: 285, protein: 15, fat: 16, carbs: 17, fiber: 3.1,
+    cost: 7.8, ingredients: ['番茄', '鸡蛋', '小葱'], tags: ['快手', '儿童友好', '下饭'], color: '#ff7b54', icon: '🍅'
+  },
+  {
+    id: 'broccoli-shrimp', name: '西兰花虾仁', style: '高蛋白轻食', cuisine: '轻食', type: 'lean-protein',
+    meals: ['lunch', 'dinner'], kcal: 238, protein: 24, fat: 7, carbs: 18, fiber: 5.4,
+    cost: 19.6, ingredients: ['西兰花', '虾仁', '蒜'], tags: ['高蛋白', '低脂', '绿色蔬菜'], color: '#39b46e', icon: '🥦'
+  },
+  {
+    id: 'kungpao-chicken', name: '宫保鸡丁', style: '川式微辣', cuisine: '川湘', type: 'protein',
+    meals: ['lunch', 'dinner'], kcal: 422, protein: 29, fat: 20, carbs: 31, fiber: 4.2,
+    cost: 18.5, ingredients: ['鸡胸肉', '黄瓜', '花生', '干辣椒'], tags: ['下饭', '经典', '微辣'], color: '#d9480f', icon: '🌶️'
+  },
+  {
+    id: 'garlic-lettuce', name: '蒜蓉生菜', style: '清爽素炒', cuisine: '粤式', type: 'vegetable',
+    meals: ['lunch', 'dinner'], kcal: 118, protein: 4, fat: 6, carbs: 12, fiber: 3.8,
+    cost: 5.6, ingredients: ['生菜', '蒜'], tags: ['低热量', '素菜', '快手'], color: '#73d13d', icon: '🥬'
+  },
+  {
+    id: 'mapo-tofu', name: '麻婆豆腐', style: '麻辣豆香', cuisine: '川湘', type: 'protein',
+    meals: ['lunch', 'dinner'], kcal: 356, protein: 19, fat: 22, carbs: 18, fiber: 3.7,
+    cost: 9.2, ingredients: ['北豆腐', '牛肉末', '豆瓣酱', '花椒'], tags: ['下饭', '豆制品', '麻辣'], color: '#c92a2a', icon: '🧈'
+  },
+  {
+    id: 'mushroom-chicken', name: '香菇滑鸡', style: '粤式鲜香', cuisine: '粤式', type: 'protein',
+    meals: ['lunch', 'dinner'], kcal: 372, protein: 30, fat: 17, carbs: 22, fiber: 3.4,
+    cost: 17.2, ingredients: ['鸡腿肉', '香菇', '姜'], tags: ['高蛋白', '鲜香', '蒸菜'], color: '#8d6e63', icon: '🍄'
+  },
+  {
+    id: 'fish-fragrant-eggplant', name: '鱼香茄子', style: '酸甜微辣', cuisine: '川湘', type: 'vegetable',
+    meals: ['lunch', 'dinner'], kcal: 338, protein: 7, fat: 20, carbs: 35, fiber: 6.2,
+    cost: 8.5, ingredients: ['茄子', '青椒', '豆瓣酱'], tags: ['下饭', '素菜', '浓香'], color: '#7b2cbf', icon: '🍆'
+  },
+  {
+    id: 'celery-beef', name: '芹菜牛肉丝', style: '高铁高蛋白', cuisine: '家常', type: 'lean-protein',
+    meals: ['lunch', 'dinner'], kcal: 318, protein: 28, fat: 13, carbs: 17, fiber: 4.1,
+    cost: 22.8, ingredients: ['牛里脊', '芹菜', '红椒'], tags: ['高蛋白', '补铁', '快炒'], color: '#2b8a3e', icon: '🥩'
+  },
+  {
+    id: 'lotus-root-pork', name: '莲藕排骨汤', style: '滋味汤羹', cuisine: '湖北', type: 'soup',
+    meals: ['dinner'], kcal: 410, protein: 27, fat: 21, carbs: 28, fiber: 4.8,
+    cost: 24.5, ingredients: ['排骨', '莲藕', '姜'], tags: ['汤羹', '滋补', '秋冬'], color: '#b08968', icon: '🍲'
+  },
+  {
+    id: 'winter-melon-soup', name: '冬瓜虾皮汤', style: '清淡汤羹', cuisine: '家常', type: 'soup',
+    meals: ['lunch', 'dinner'], kcal: 96, protein: 7, fat: 3, carbs: 11, fiber: 2.5,
+    cost: 6.2, ingredients: ['冬瓜', '虾皮', '小葱'], tags: ['低热量', '汤羹', '补水'], color: '#8ce99a', icon: '🥣'
+  },
+  {
+    id: 'cucumber-fungus', name: '黄瓜木耳拌腐竹', style: '凉拌高纤', cuisine: '凉菜', type: 'vegetable',
+    meals: ['lunch', 'dinner'], kcal: 246, protein: 13, fat: 12, carbs: 22, fiber: 7.6,
+    cost: 10.5, ingredients: ['黄瓜', '木耳', '腐竹'], tags: ['高纤维', '凉菜', '素蛋白'], color: '#20c997', icon: '🥒'
+  },
+  {
+    id: 'steamed-fish', name: '清蒸鲈鱼', style: '粤式清蒸', cuisine: '粤式', type: 'lean-protein',
+    meals: ['dinner'], kcal: 306, protein: 34, fat: 13, carbs: 10, fiber: 1.1,
+    cost: 35.8, ingredients: ['鲈鱼', '姜葱', '蒸鱼豉油'], tags: ['高蛋白', '低脂', '宴客'], color: '#4dabf7', icon: '🐟'
+  },
+  {
+    id: 'pepper-pork', name: '青椒肉丝', style: '家常下饭', cuisine: '家常', type: 'protein',
+    meals: ['lunch', 'dinner'], kcal: 388, protein: 25, fat: 19, carbs: 26, fiber: 3.2,
+    cost: 15.5, ingredients: ['瘦猪肉', '青椒', '蒜'], tags: ['下饭', '快炒', '经典'], color: '#51cf66', icon: '🫑'
+  },
+  {
+    id: 'eggplant-beans', name: '茄子豆角', style: '湘味素炒', cuisine: '川湘', type: 'vegetable',
+    meals: ['lunch', 'dinner'], kcal: 326, protein: 8, fat: 18, carbs: 34, fiber: 8.2,
+    cost: 9.8, ingredients: ['茄子', '豆角', '蒜'], tags: ['高纤维', '下饭', '素菜'], color: '#5f3dc4', icon: '🫛'
+  },
+  {
+    id: 'cabbage-tofu', name: '白菜豆腐煲', style: '暖胃低脂', cuisine: '家常', type: 'vegetable',
+    meals: ['dinner'], kcal: 228, protein: 14, fat: 10, carbs: 21, fiber: 5.6,
+    cost: 8.8, ingredients: ['白菜', '豆腐', '粉丝'], tags: ['暖胃', '豆制品', '低脂'], color: '#a9e34b', icon: '🥬'
+  },
+  {
+    id: 'spinach-egg', name: '菠菜鸡蛋汤', style: '清淡快手', cuisine: '家常', type: 'soup',
+    meals: ['lunch', 'dinner'], kcal: 145, protein: 10, fat: 8, carbs: 9, fiber: 2.9,
+    cost: 5.8, ingredients: ['菠菜', '鸡蛋'], tags: ['快手', '清淡', '汤羹'], color: '#2f9e44', icon: '🍳'
+  },
+  {
+    id: 'black-pepper-chicken', name: '黑椒鸡胸彩椒', style: '健身轻食', cuisine: '轻食', type: 'lean-protein',
+    meals: ['lunch', 'dinner'], kcal: 292, protein: 35, fat: 8, carbs: 18, fiber: 4.6,
+    cost: 16.8, ingredients: ['鸡胸肉', '彩椒', '黑胡椒'], tags: ['高蛋白', '低脂', '健身'], color: '#495057', icon: '🍗'
+  },
+  {
+    id: 'sweet-sour-ribs', name: '糖醋小排', style: '江浙酸甜', cuisine: '江浙', type: 'protein',
+    meals: ['dinner'], kcal: 548, protein: 31, fat: 32, carbs: 35, fiber: 1.5,
+    cost: 28.6, ingredients: ['肋排', '冰糖', '香醋'], tags: ['宴客', '酸甜', '高能量'], color: '#e8590c', icon: '🍖'
+  },
+  {
+    id: 'scrambled-zucchini', name: '西葫芦炒蛋', style: '清甜家常', cuisine: '家常', type: 'protein',
+    meals: ['lunch', 'dinner'], kcal: 246, protein: 13, fat: 14, carbs: 18, fiber: 3.6,
+    cost: 7.2, ingredients: ['西葫芦', '鸡蛋'], tags: ['快手', '清淡', '家常'], color: '#94d82d', icon: '🥒'
+  },
+  {
+    id: 'potato-beef', name: '土豆炖牛腩', style: '浓香炖菜', cuisine: '家常', type: 'protein',
+    meals: ['dinner'], kcal: 526, protein: 34, fat: 25, carbs: 42, fiber: 4.5,
+    cost: 32.8, ingredients: ['牛腩', '土豆', '胡萝卜'], tags: ['炖菜', '高蛋白', '耐饱'], color: '#a16207', icon: '🥔'
+  },
+  {
+    id: 'yam-chicken-soup', name: '山药鸡汤', style: '清补汤羹', cuisine: '家常', type: 'soup',
+    meals: ['dinner'], kcal: 392, protein: 30, fat: 16, carbs: 33, fiber: 3.9,
+    cost: 23.5, ingredients: ['鸡腿', '山药', '枸杞'], tags: ['汤羹', '滋补', '高蛋白'], color: '#f2cc8f', icon: '🍲'
+  },
+  {
+    id: 'pakchoi-mushroom', name: '香菇油菜', style: '清爽素鲜', cuisine: '家常', type: 'vegetable',
+    meals: ['lunch', 'dinner'], kcal: 166, protein: 7, fat: 8, carbs: 17, fiber: 5.1,
+    cost: 8.2, ingredients: ['油菜', '香菇', '蚝油'], tags: ['素菜', '高纤维', '清淡'], color: '#37b24d', icon: '🥬'
+  },
+  {
+    id: 'corn-carrot-pork', name: '玉米胡萝卜排骨汤', style: '甜润汤羹', cuisine: '粤式', type: 'soup',
+    meals: ['dinner'], kcal: 438, protein: 28, fat: 22, carbs: 35, fiber: 4.4,
+    cost: 26.8, ingredients: ['排骨', '玉米', '胡萝卜'], tags: ['汤羹', '儿童友好', '滋补'], color: '#f59f00', icon: '🌽'
+  },
+  {
+    id: 'lettuce-chicken-wrap', name: '生菜鸡肉卷', style: '低碳轻食', cuisine: '轻食', type: 'lean-protein',
+    meals: ['lunch'], kcal: 260, protein: 32, fat: 9, carbs: 14, fiber: 4.2,
+    cost: 15.8, ingredients: ['鸡胸肉', '生菜', '黄瓜'], tags: ['低碳', '高蛋白', '便当'], color: '#12b886', icon: '🌯'
+  },
+  {
+    id: 'tuna-rice-bowl', name: '金枪鱼糙米碗', style: '高蛋白便当', cuisine: '轻食', type: 'staple',
+    meals: ['lunch'], kcal: 486, protein: 32, fat: 11, carbs: 62, fiber: 6.5,
+    cost: 18.8, ingredients: ['金枪鱼', '糙米', '玉米粒', '黄瓜'], tags: ['便当', '高蛋白', '主食'], color: '#339af0', icon: '🍚'
+  },
+  {
+    id: 'rice', name: '杂粮米饭', style: '主食搭配', cuisine: '主食', type: 'staple',
+    meals: ['lunch', 'dinner'], kcal: 220, protein: 5, fat: 2, carbs: 46, fiber: 3.2,
+    cost: 2.6, ingredients: ['大米', '糙米', '燕麦米'], tags: ['主食', '饱腹', '基础'], color: '#f8f0d8', icon: '🍚'
+  },
+  {
+    id: 'buckwheat-noodle', name: '荞麦鸡丝面', style: '低 GI 主食', cuisine: '轻食', type: 'staple',
+    meals: ['lunch'], kcal: 438, protein: 26, fat: 9, carbs: 66, fiber: 6.8,
+    cost: 13.6, ingredients: ['荞麦面', '鸡丝', '黄瓜'], tags: ['低GI', '主食', '便当'], color: '#866043', icon: '🍜'
+  },
+  {
+    id: 'cauliflower-beef-rice', name: '菜花牛肉粒饭', style: '控糖便当', cuisine: '轻食', type: 'staple',
+    meals: ['lunch'], kcal: 412, protein: 31, fat: 14, carbs: 42, fiber: 7.2,
+    cost: 21.5, ingredients: ['牛肉粒', '菜花米', '糙米'], tags: ['控糖', '高蛋白', '便当'], color: '#74c0fc', icon: '🥣'
+  },
+  {
+    id: 'tofu-minced-meat', name: '肉末蒸豆腐', style: '嫩滑高蛋白', cuisine: '家常', type: 'protein',
+    meals: ['lunch', 'dinner'], kcal: 296, protein: 22, fat: 15, carbs: 14, fiber: 2.3,
+    cost: 10.8, ingredients: ['嫩豆腐', '猪肉末', '小葱'], tags: ['蒸菜', '豆制品', '高蛋白'], color: '#ffd8a8', icon: '🥢'
+  },
+  {
+    id: 'shanghai-greens', name: '上汤上海青', style: '清鲜绿叶', cuisine: '粤式', type: 'vegetable',
+    meals: ['lunch', 'dinner'], kcal: 142, protein: 6, fat: 7, carbs: 14, fiber: 4.7,
+    cost: 7.6, ingredients: ['上海青', '皮蛋', '高汤'], tags: ['绿叶菜', '清淡', '高纤维'], color: '#66a80f', icon: '🥬'
+  },
+  {
+    id: 'sour-potato', name: '酸辣土豆丝', style: '脆爽开胃', cuisine: '川湘', type: 'vegetable',
+    meals: ['lunch', 'dinner'], kcal: 256, protein: 5, fat: 11, carbs: 37, fiber: 4.5,
+    cost: 5.2, ingredients: ['土豆', '青红椒', '醋'], tags: ['便宜', '下饭', '素菜'], color: '#fab005', icon: '🥔'
+  },
+  {
+    id: 'okra-egg', name: '秋葵蒸蛋', style: '滑嫩高纤', cuisine: '家常', type: 'protein',
+    meals: ['lunch', 'dinner'], kcal: 208, protein: 14, fat: 12, carbs: 11, fiber: 3.9,
+    cost: 9.5, ingredients: ['秋葵', '鸡蛋'], tags: ['蒸菜', '高纤维', '清淡'], color: '#40c057', icon: '🍮'
+  },
+  {
+    id: 'clam-tofu-soup', name: '花蛤豆腐汤', style: '海鲜鲜汤', cuisine: '闽粤', type: 'soup',
+    meals: ['dinner'], kcal: 228, protein: 23, fat: 8, carbs: 15, fiber: 1.9,
+    cost: 16.2, ingredients: ['花蛤', '豆腐', '姜丝'], tags: ['汤羹', '高蛋白', '海鲜'], color: '#15aabf', icon: '🦪'
+  },
+  {
+    id: 'egg-fried-rice-lite', name: '彩蔬蛋炒饭', style: '快手主食', cuisine: '家常', type: 'staple',
+    meals: ['lunch'], kcal: 468, protein: 16, fat: 14, carbs: 68, fiber: 5.4,
+    cost: 8.6, ingredients: ['米饭', '鸡蛋', '胡萝卜', '青豆'], tags: ['主食', '快手', '便当'], color: '#ffd43b', icon: '🍛'
+  },
+  {
+    id: 'chicken-curry', name: '咖喱鸡肉蔬菜', style: '浓香一锅', cuisine: '融合', type: 'protein',
+    meals: ['lunch', 'dinner'], kcal: 486, protein: 30, fat: 21, carbs: 45, fiber: 5.9,
+    cost: 20.5, ingredients: ['鸡腿肉', '土豆', '胡萝卜', '洋葱'], tags: ['一锅出', '耐饱', '下饭'], color: '#f08c00', icon: '🍛'
+  },
+  {
+    id: 'garlic-broccoli', name: '蒜香西兰花', style: '高纤绿蔬', cuisine: '家常', type: 'vegetable',
+    meals: ['lunch', 'dinner'], kcal: 136, protein: 6, fat: 6, carbs: 16, fiber: 5.9,
+    cost: 8.9, ingredients: ['西兰花', '蒜'], tags: ['低热量', '高纤维', '素菜'], color: '#2f9e44', icon: '🥦'
+  },
+  {
+    id: 'kelp-beef-soup', name: '海带牛肉汤', style: '清汤高蛋白', cuisine: '韩式', type: 'soup',
+    meals: ['dinner'], kcal: 282, protein: 28, fat: 11, carbs: 17, fiber: 4.4,
+    cost: 20.8, ingredients: ['牛肉片', '海带', '蒜'], tags: ['汤羹', '高蛋白', '补碘'], color: '#0b7285', icon: '🍲'
+  },
+  {
+    id: 'bean-sprout-chicken', name: '豆芽鸡丝', style: '清爽高蛋白', cuisine: '家常', type: 'lean-protein',
+    meals: ['lunch', 'dinner'], kcal: 232, protein: 27, fat: 8, carbs: 14, fiber: 3.6,
+    cost: 11.8, ingredients: ['绿豆芽', '鸡胸肉', '胡萝卜'], tags: ['低脂', '高蛋白', '快炒'], color: '#82c91e', icon: '🌱'
+  },
+  {
+    id: 'soy-milk-youtiao', name: '豆浆油条', style: '北方经典早餐', cuisine: '全国早餐', type: 'breakfast',
+    meals: ['breakfast'], regions: ['national', 'north', 'east'], kcal: 430, protein: 14, fat: 20, carbs: 52, fiber: 3.4,
+    cost: 7.5, ingredients: ['黄豆', '油条', '小菜'], tags: ['早餐', '平价', '经典'], color: '#f59f00', icon: '🥛'
+  },
+  {
+    id: 'baozi-millet-congee', name: '包子小米粥', style: '家常暖胃早餐', cuisine: '北方', type: 'breakfast',
+    meals: ['breakfast'], regions: ['national', 'north', 'northwest'], kcal: 385, protein: 16, fat: 10, carbs: 58, fiber: 4.6,
+    cost: 8.8, ingredients: ['肉包', '小米', '咸菜'], tags: ['早餐', '暖胃', '饱腹'], color: '#f2cc8f', icon: '🥟'
+  },
+  {
+    id: 'jianbing-guozi', name: '煎饼果子', style: '天津风味快手早餐', cuisine: '华北', type: 'breakfast',
+    meals: ['breakfast'], regions: ['north', 'national'], kcal: 520, protein: 19, fat: 22, carbs: 62, fiber: 5.2,
+    cost: 9.8, ingredients: ['绿豆面', '鸡蛋', '薄脆', '生菜'], tags: ['早餐', '街头', '饱腹'], color: '#fab005', icon: '🌯'
+  },
+  {
+    id: 'wuhan-hot-dry-noodles', name: '热干面', style: '武汉芝麻酱香', cuisine: '湖北', type: 'breakfast',
+    meals: ['breakfast'], regions: ['central', 'national'], kcal: 560, protein: 18, fat: 24, carbs: 72, fiber: 4.1,
+    cost: 8.5, ingredients: ['碱水面', '芝麻酱', '萝卜丁'], tags: ['早餐', '地方特色', '饱腹'], color: '#b08968', icon: '🍜'
+  },
+  {
+    id: 'henan-hulatang', name: '胡辣汤配油馍头', style: '中原辛香早餐', cuisine: '河南', type: 'breakfast',
+    meals: ['breakfast'], regions: ['central', 'northwest', 'north'], kcal: 468, protein: 17, fat: 18, carbs: 61, fiber: 5.8,
+    cost: 9.2, ingredients: ['胡辣汤料', '牛肉丁', '面筋', '油馍头'], tags: ['早餐', '辛香', '暖胃'], color: '#a16207', icon: '🥣'
+  },
+  {
+    id: 'cantonese-cheung-fun', name: '鲜虾肠粉', style: '粤式滑嫩早餐', cuisine: '广东', type: 'breakfast',
+    meals: ['breakfast'], regions: ['south', 'national'], kcal: 330, protein: 18, fat: 7, carbs: 50, fiber: 2.2,
+    cost: 13.8, ingredients: ['米浆', '虾仁', '生菜', '豉油'], tags: ['早餐', '清淡', '粤式'], color: '#74c0fc', icon: '🍤'
+  },
+  {
+    id: 'cantonese-congee', name: '皮蛋瘦肉粥', style: '粤式清润粥品', cuisine: '广东', type: 'breakfast',
+    meals: ['breakfast'], regions: ['south', 'east', 'national'], kcal: 285, protein: 16, fat: 8, carbs: 38, fiber: 1.9,
+    cost: 10.5, ingredients: ['大米', '瘦肉', '皮蛋', '姜丝'], tags: ['早餐', '清淡', '粥'], color: '#e9ecef', icon: '🥣'
+  },
+  {
+    id: 'guilin-rice-noodles', name: '桂林米粉', style: '广西卤香米粉', cuisine: '广西', type: 'breakfast',
+    meals: ['breakfast'], regions: ['south', 'southwest', 'national'], kcal: 486, protein: 20, fat: 14, carbs: 70, fiber: 4.0,
+    cost: 11.8, ingredients: ['米粉', '卤牛肉', '酸笋', '青菜'], tags: ['早餐', '米粉', '地方特色'], color: '#f08c00', icon: '🍜'
+  },
+  {
+    id: 'yunnan-rice-noodle', name: '云南小锅米线', style: '滇味酸香早餐', cuisine: '云南', type: 'breakfast',
+    meals: ['breakfast'], regions: ['southwest', 'national'], kcal: 452, protein: 22, fat: 13, carbs: 63, fiber: 5.4,
+    cost: 12.8, ingredients: ['米线', '肉末', '番茄', '韭菜'], tags: ['早餐', '米线', '酸香'], color: '#e8590c', icon: '🍲'
+  },
+  {
+    id: 'shanghai-fantuan', name: '上海粢饭团', style: '江南糯米早餐', cuisine: '上海', type: 'breakfast',
+    meals: ['breakfast'], regions: ['east', 'national'], kcal: 510, protein: 13, fat: 16, carbs: 78, fiber: 4.8,
+    cost: 8.6, ingredients: ['糯米', '油条碎', '肉松', '榨菜'], tags: ['早餐', '江南', '饱腹'], color: '#ced4da', icon: '🍙'
+  },
+  {
+    id: 'shandong-pancake-roll', name: '山东杂粮煎饼', style: '粗粮高纤早餐', cuisine: '山东', type: 'breakfast',
+    meals: ['breakfast'], regions: ['north', 'east', 'national'], kcal: 420, protein: 17, fat: 12, carbs: 64, fiber: 7.5,
+    cost: 8.8, ingredients: ['杂粮面', '鸡蛋', '生菜', '酱料'], tags: ['早餐', '粗粮', '高纤维'], color: '#d9a441', icon: '🫓'
+  },
+  {
+    id: 'xian-roujiamo-soup', name: '肉夹馍配丸子汤', style: '西北能量早餐', cuisine: '陕西', type: 'breakfast',
+    meals: ['breakfast'], regions: ['northwest', 'national'], kcal: 610, protein: 28, fat: 26, carbs: 68, fiber: 3.7,
+    cost: 16.8, ingredients: ['白吉馍', '卤肉', '丸子汤', '青菜'], tags: ['早餐', '高蛋白', '西北'], color: '#8d6e63', icon: '🥙'
+  },
+  {
+    id: 'douhua-rice', name: '豆花饭早餐', style: '川渝豆香微辣', cuisine: '川渝', type: 'breakfast',
+    meals: ['breakfast'], regions: ['southwest'], kcal: 392, protein: 20, fat: 12, carbs: 50, fiber: 4.3,
+    cost: 9.6, ingredients: ['豆花', '米饭', '蘸水', '小菜'], tags: ['早餐', '豆制品', '地方特色'], color: '#ffd8a8', icon: '🍚'
+  },
+  {
+    id: 'egg-milk-oats', name: '鸡蛋牛奶燕麦', style: '轻食均衡早餐', cuisine: '轻食', type: 'breakfast',
+    meals: ['breakfast'], regions: ['national', 'east', 'south'], kcal: 360, protein: 24, fat: 12, carbs: 42, fiber: 6.2,
+    cost: 10.8, ingredients: ['鸡蛋', '牛奶', '燕麦', '蓝莓'], tags: ['早餐', '高蛋白', '轻食'], color: '#91a7ff', icon: '🥣'
+  },
+  {
+    id: 'twice-cooked-pork', name: '回锅肉', style: '川式家常咸香', cuisine: '川菜', type: 'protein',
+    meals: ['lunch', 'dinner'], regions: ['southwest', 'national'], kcal: 498, protein: 25, fat: 34, carbs: 22, fiber: 3.6,
+    cost: 19.8, ingredients: ['五花肉', '蒜苗', '豆瓣酱', '青椒'], tags: ['家常菜', '下饭', '川菜'], color: '#c2410c', icon: '🥓'
+  },
+  {
+    id: 'fish-fragrant-pork', name: '鱼香肉丝', style: '川味酸甜微辣', cuisine: '川菜', type: 'protein',
+    meals: ['lunch', 'dinner'], regions: ['southwest', 'national'], kcal: 386, protein: 26, fat: 18, carbs: 31, fiber: 4.2,
+    cost: 17.8, ingredients: ['里脊肉', '木耳', '胡萝卜', '泡椒'], tags: ['家常菜', '下饭', '酸甜'], color: '#d9480f', icon: '🥢'
+  },
+  {
+    id: 'boiled-beef-sichuan', name: '水煮牛肉', style: '川菜麻辣高蛋白', cuisine: '川菜', type: 'protein',
+    meals: ['dinner'], regions: ['southwest'], kcal: 468, protein: 34, fat: 25, carbs: 26, fiber: 5.1,
+    cost: 28.8, ingredients: ['牛肉片', '豆芽', '莴笋', '花椒'], tags: ['川菜', '麻辣', '高蛋白'], color: '#b91c1c', icon: '🌶️'
+  },
+  {
+    id: 'hunan-beef-stir', name: '小炒黄牛肉', style: '湘味鲜辣', cuisine: '湘菜', type: 'lean-protein',
+    meals: ['lunch', 'dinner'], regions: ['central', 'southwest', 'national'], kcal: 342, protein: 31, fat: 15, carbs: 18, fiber: 3.9,
+    cost: 26.8, ingredients: ['黄牛肉', '香菜', '小米辣', '蒜'], tags: ['湘菜', '鲜辣', '高蛋白'], color: '#dc2626', icon: '🥩'
+  },
+  {
+    id: 'chopped-pepper-fish-head', name: '剁椒鱼头', style: '湘菜鲜辣蒸菜', cuisine: '湘菜', type: 'lean-protein',
+    meals: ['dinner'], regions: ['central'], kcal: 420, protein: 39, fat: 20, carbs: 18, fiber: 2.4,
+    cost: 34.8, ingredients: ['鱼头', '剁椒', '姜蒜', '葱'], tags: ['湘菜', '蒸菜', '高蛋白'], color: '#ef4444', icon: '🐟'
+  },
+  {
+    id: 'hunan-cabbage', name: '手撕包菜', style: '湘味快炒素菜', cuisine: '湘菜', type: 'vegetable',
+    meals: ['lunch', 'dinner'], regions: ['central', 'national'], kcal: 186, protein: 6, fat: 10, carbs: 20, fiber: 6.4,
+    cost: 6.8, ingredients: ['包菜', '干辣椒', '蒜', '陈醋'], tags: ['家常菜', '素菜', '高纤维'], color: '#65a30d', icon: '🥬'
+  },
+  {
+    id: 'cantonese-white-cut-chicken', name: '白切鸡', style: '粤式清鲜嫩滑', cuisine: '粤菜', type: 'lean-protein',
+    meals: ['lunch', 'dinner'], regions: ['south'], kcal: 386, protein: 36, fat: 22, carbs: 6, fiber: 0.8,
+    cost: 32.8, ingredients: ['三黄鸡', '姜葱', '沙姜酱'], tags: ['粤菜', '清淡', '高蛋白'], color: '#facc15', icon: '🍗'
+  },
+  {
+    id: 'black-bean-steamed-ribs', name: '豉汁蒸排骨', style: '广式蒸菜', cuisine: '粤菜', type: 'protein',
+    meals: ['lunch', 'dinner'], regions: ['south'], kcal: 468, protein: 30, fat: 28, carbs: 20, fiber: 1.6,
+    cost: 24.8, ingredients: ['排骨', '豆豉', '蒜蓉', '芋头'], tags: ['粤菜', '蒸菜', '下饭'], color: '#92400e', icon: '🥩'
+  },
+  {
+    id: 'garlic-water-spinach', name: '蒜蓉空心菜', style: '华南清爽绿蔬', cuisine: '粤闽', type: 'vegetable',
+    meals: ['lunch', 'dinner'], regions: ['south', 'national'], kcal: 138, protein: 5, fat: 7, carbs: 15, fiber: 5.5,
+    cost: 7.8, ingredients: ['空心菜', '蒜', '腐乳汁'], tags: ['素菜', '绿叶菜', '高纤维'], color: '#16a34a', icon: '🥬'
+  },
+  {
+    id: 'shandong-muxu-pork', name: '木须肉', style: '鲁菜家常快炒', cuisine: '鲁菜', type: 'protein',
+    meals: ['lunch', 'dinner'], regions: ['north', 'east', 'national'], kcal: 326, protein: 24, fat: 16, carbs: 21, fiber: 4.5,
+    cost: 15.8, ingredients: ['猪里脊', '鸡蛋', '木耳', '黄瓜'], tags: ['鲁菜', '家常菜', '快炒'], color: '#f59e0b', icon: '🍳'
+  },
+  {
+    id: 'scallion-tofu-shandong', name: '葱烧豆腐', style: '鲁菜葱香豆制品', cuisine: '鲁菜', type: 'vegetable',
+    meals: ['lunch', 'dinner'], regions: ['north', 'national'], kcal: 258, protein: 16, fat: 14, carbs: 18, fiber: 3.6,
+    cost: 8.8, ingredients: ['北豆腐', '大葱', '生抽'], tags: ['鲁菜', '豆制品', '家常菜'], color: '#fde68a', icon: '🧈'
+  },
+  {
+    id: 'northeast-di-san-xian', name: '地三鲜', style: '东北家常素烧', cuisine: '东北菜', type: 'vegetable',
+    meals: ['lunch', 'dinner'], regions: ['north'], kcal: 366, protein: 7, fat: 20, carbs: 42, fiber: 7.1,
+    cost: 9.8, ingredients: ['土豆', '茄子', '青椒'], tags: ['东北菜', '家常菜', '下饭'], color: '#7c3aed', icon: '🍆'
+  },
+  {
+    id: 'northeast-chicken-mushroom', name: '小鸡炖蘑菇', style: '东北暖锅炖菜', cuisine: '东北菜', type: 'protein',
+    meals: ['dinner'], regions: ['north'], kcal: 486, protein: 36, fat: 24, carbs: 32, fiber: 5.0,
+    cost: 29.8, ingredients: ['鸡块', '榛蘑', '粉条', '葱姜'], tags: ['东北菜', '炖菜', '高蛋白'], color: '#a16207', icon: '🍲'
+  },
+  {
+    id: 'guobaorou', name: '锅包肉', style: '东北酸甜酥香', cuisine: '东北菜', type: 'protein',
+    meals: ['lunch', 'dinner'], regions: ['north'], kcal: 560, protein: 30, fat: 24, carbs: 56, fiber: 2.1,
+    cost: 24.8, ingredients: ['猪里脊', '淀粉', '胡萝卜', '香菜'], tags: ['东北菜', '酸甜', '宴客'], color: '#fb923c', icon: '🍖'
+  },
+  {
+    id: 'braised-lion-head', name: '红烧狮子头', style: '淮扬浓香家常', cuisine: '苏菜', type: 'protein',
+    meals: ['dinner'], regions: ['east', 'national'], kcal: 526, protein: 28, fat: 34, carbs: 28, fiber: 2.8,
+    cost: 24.6, ingredients: ['猪肉馅', '荸荠', '青菜', '高汤'], tags: ['苏菜', '红烧', '家常菜'], color: '#b45309', icon: '🍖'
+  },
+  {
+    id: 'yangzhou-fried-rice', name: '扬州炒饭', style: '淮扬经典主食', cuisine: '苏菜', type: 'staple',
+    meals: ['lunch'], regions: ['east', 'national'], kcal: 520, protein: 20, fat: 16, carbs: 72, fiber: 4.4,
+    cost: 12.8, ingredients: ['米饭', '鸡蛋', '火腿', '虾仁', '青豆'], tags: ['苏菜', '主食', '便当'], color: '#fbbf24', icon: '🍚'
+  },
+  {
+    id: 'longjing-shrimp', name: '龙井虾仁', style: '浙菜清鲜', cuisine: '浙菜', type: 'lean-protein',
+    meals: ['lunch', 'dinner'], regions: ['east'], kcal: 246, protein: 28, fat: 8, carbs: 13, fiber: 1.2,
+    cost: 36.8, ingredients: ['虾仁', '龙井茶', '蛋清'], tags: ['浙菜', '清淡', '高蛋白'], color: '#86efac', icon: '🍤'
+  },
+  {
+    id: 'west-lake-vinegar-fish', name: '西湖醋鱼', style: '浙菜酸甜鱼鲜', cuisine: '浙菜', type: 'lean-protein',
+    meals: ['dinner'], regions: ['east'], kcal: 318, protein: 33, fat: 10, carbs: 24, fiber: 1.0,
+    cost: 32.8, ingredients: ['草鱼', '香醋', '姜末'], tags: ['浙菜', '鱼类', '酸甜'], color: '#60a5fa', icon: '🐟'
+  },
+  {
+    id: 'fujian-oyster-omelette', name: '海蛎煎', style: '闽南家常小海鲜', cuisine: '闽菜', type: 'protein',
+    meals: ['lunch', 'dinner'], regions: ['south'], kcal: 386, protein: 22, fat: 18, carbs: 34, fiber: 2.8,
+    cost: 18.8, ingredients: ['海蛎', '鸡蛋', '地瓜粉', '青蒜'], tags: ['闽菜', '海鲜', '家常菜'], color: '#38bdf8', icon: '🦪'
+  },
+  {
+    id: 'hakka-stuffed-tofu', name: '客家酿豆腐', style: '闽粤客家家常', cuisine: '客家菜', type: 'protein',
+    meals: ['lunch', 'dinner'], regions: ['south'], kcal: 336, protein: 24, fat: 18, carbs: 20, fiber: 3.2,
+    cost: 15.8, ingredients: ['豆腐', '肉馅', '香菇', '葱'], tags: ['客家菜', '豆制品', '家常菜'], color: '#fcd34d', icon: '🥢'
+  },
+  {
+    id: 'anhui-stinky-mandarin-fish', name: '臭鳜鱼', style: '徽菜发酵鲜香', cuisine: '徽菜', type: 'lean-protein',
+    meals: ['dinner'], regions: ['east'], kcal: 368, protein: 38, fat: 18, carbs: 12, fiber: 1.2,
+    cost: 39.8, ingredients: ['鳜鱼', '笋丁', '青椒', '姜蒜'], tags: ['徽菜', '鱼类', '地方特色'], color: '#64748b', icon: '🐟'
+  },
+  {
+    id: 'anhui-bamboo-shoot-pork', name: '徽州笋干烧肉', style: '徽菜炖烧家常', cuisine: '徽菜', type: 'protein',
+    meals: ['dinner'], regions: ['east'], kcal: 520, protein: 28, fat: 32, carbs: 32, fiber: 6.0,
+    cost: 22.8, ingredients: ['五花肉', '笋干', '冰糖', '酱油'], tags: ['徽菜', '炖菜', '家常菜'], color: '#92400e', icon: '🥘'
+  },
+  {
+    id: 'xinjiang-big-plate-chicken', name: '新疆大盘鸡', style: '西北浓香拌面', cuisine: '西北菜', type: 'protein',
+    meals: ['dinner'], regions: ['northwest'], kcal: 620, protein: 40, fat: 24, carbs: 62, fiber: 6.8,
+    cost: 32.8, ingredients: ['鸡块', '土豆', '青椒', '宽面'], tags: ['西北菜', '高蛋白', '主食'], color: '#ea580c', icon: '🍗'
+  },
+  {
+    id: 'lamb-paomo', name: '羊肉泡馍', style: '陕西暖胃主食', cuisine: '西北菜', type: 'staple',
+    meals: ['lunch', 'dinner'], regions: ['northwest'], kcal: 586, protein: 34, fat: 20, carbs: 68, fiber: 4.9,
+    cost: 24.8, ingredients: ['羊肉', '馍', '粉丝', '香菜'], tags: ['西北菜', '主食', '暖胃'], color: '#a855f7', icon: '🍲'
+  },
+  {
+    id: 'guizhou-sour-fish', name: '酸汤鱼', style: '黔味酸辣鱼汤', cuisine: '贵州菜', type: 'lean-protein',
+    meals: ['dinner'], regions: ['southwest'], kcal: 358, protein: 35, fat: 13, carbs: 24, fiber: 4.7,
+    cost: 29.8, ingredients: ['草鱼', '酸汤', '番茄', '豆芽'], tags: ['西南菜', '酸辣', '鱼类'], color: '#ef4444', icon: '🐟'
+  },
+  {
+    id: 'yunnan-steam-pot-chicken', name: '云南汽锅鸡', style: '滇味清补汤菜', cuisine: '云南菜', type: 'soup',
+    meals: ['dinner'], regions: ['southwest'], kcal: 398, protein: 34, fat: 18, carbs: 23, fiber: 2.4,
+    cost: 28.8, ingredients: ['土鸡', '三七', '菌菇', '姜'], tags: ['云南菜', '汤羹', '高蛋白'], color: '#fbbf24', icon: '🍲'
+  },
+  {
+    id: 'wuchang-fish', name: '清蒸武昌鱼', style: '湖北家常河鲜', cuisine: '湖北菜', type: 'lean-protein',
+    meals: ['lunch', 'dinner'], regions: ['central'], kcal: 286, protein: 32, fat: 12, carbs: 10, fiber: 1.0,
+    cost: 26.8, ingredients: ['武昌鱼', '姜葱', '蒸鱼豉油'], tags: ['湖北菜', '清蒸', '高蛋白'], color: '#38bdf8', icon: '🐟'
+  },
+  {
+    id: 'henan-braised-noodle', name: '河南烩面', style: '中原汤面主食', cuisine: '豫菜', type: 'staple',
+    meals: ['lunch'], regions: ['central', 'northwest', 'north'], kcal: 560, protein: 26, fat: 16, carbs: 76, fiber: 5.5,
+    cost: 16.8, ingredients: ['宽面', '羊肉汤', '海带', '豆腐皮'], tags: ['豫菜', '主食', '暖胃'], color: '#eab308', icon: '🍜'
+  },
+  {
+    id: 'cola-chicken-wings', name: '可乐鸡翅', style: '全国儿童友好家常', cuisine: '家常', type: 'protein',
+    meals: ['lunch', 'dinner'], regions: ['national'], kcal: 456, protein: 28, fat: 24, carbs: 32, fiber: 0.8,
+    cost: 20.8, ingredients: ['鸡翅', '可乐', '姜片'], tags: ['家常菜', '儿童友好', '下饭'], color: '#7c2d12', icon: '🍗'
+  },
+  {
+    id: 'braised-pork-belly-home', name: '家常红烧肉', style: '全国浓香下饭', cuisine: '家常', type: 'protein',
+    meals: ['dinner'], regions: ['national', 'east', 'north'], kcal: 620, protein: 28, fat: 42, carbs: 32, fiber: 1.6,
+    cost: 24.8, ingredients: ['五花肉', '冰糖', '葱姜', '八角'], tags: ['家常菜', '红烧', '高能量'], color: '#991b1b', icon: '🥘'
+  }
+];
+
+
+
+export const marketPrices = [
+  {
+    "item": "八角",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "白菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 4.5,
+    "regions": {
+      "national": 4.5,
+      "north": 4.3,
+      "east": 5,
+      "south": 4.9,
+      "central": 4.4,
+      "southwest": 4.2,
+      "northwest": 4.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "白吉馍",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "包菜",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 4.5,
+    "regions": {
+      "national": 4.5,
+      "north": 4.3,
+      "east": 5,
+      "south": 4.9,
+      "central": 4.4,
+      "southwest": 4.2,
+      "northwest": 4.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "薄脆",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 16,
+    "regions": {
+      "national": 16,
+      "north": 15.4,
+      "east": 17.9,
+      "south": 17.3,
+      "central": 15.7,
+      "southwest": 15,
+      "northwest": 16.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "北豆腐",
+    "category": "蛋奶豆制品",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "荸荠",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "冰糖",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "菠菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 9,
+    "regions": {
+      "national": 9,
+      "north": 8.6,
+      "east": 10.1,
+      "south": 9.7,
+      "central": 8.8,
+      "southwest": 8.5,
+      "northwest": 9.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "彩椒",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 15,
+    "regions": {
+      "national": 15,
+      "north": 14.4,
+      "east": 16.8,
+      "south": 16.2,
+      "central": 14.7,
+      "southwest": 14.1,
+      "northwest": 15.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "菜花米",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "糙米",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "草鱼",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 24,
+    "regions": {
+      "national": 24,
+      "north": 23,
+      "east": 26.9,
+      "south": 25.9,
+      "central": 23.5,
+      "southwest": 22.6,
+      "northwest": 24.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "陈醋",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "豉油",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "葱",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "葱姜",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "醋",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "大葱",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "大米",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 5.5,
+    "regions": {
+      "national": 5.5,
+      "north": 5.3,
+      "east": 6.2,
+      "south": 5.9,
+      "central": 5.4,
+      "southwest": 5.2,
+      "northwest": 5.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "蛋清",
+    "category": "蛋奶豆制品",
+    "unit": "kg",
+    "nationalAvg": 11,
+    "regions": {
+      "national": 11,
+      "north": 10.6,
+      "east": 12.3,
+      "south": 11.9,
+      "central": 10.8,
+      "southwest": 10.3,
+      "northwest": 11.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "地瓜粉",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "淀粉",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "冬瓜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 3.5,
+    "regions": {
+      "national": 3.5,
+      "north": 3.4,
+      "east": 3.9,
+      "south": 3.8,
+      "central": 3.4,
+      "southwest": 3.3,
+      "northwest": 3.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "豆瓣酱",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "豆豉",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "豆腐",
+    "category": "蛋奶豆制品",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "豆腐皮",
+    "category": "蛋奶豆制品",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "豆花",
+    "category": "蛋奶豆制品",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "豆角",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "豆芽",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 4.8,
+    "regions": {
+      "national": 4.8,
+      "north": 4.6,
+      "east": 5.4,
+      "south": 5.2,
+      "central": 4.7,
+      "southwest": 4.5,
+      "northwest": 4.9
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "剁椒",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "番茄",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "粉丝",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 9,
+    "regions": {
+      "national": 9,
+      "north": 8.6,
+      "east": 10.1,
+      "south": 9.7,
+      "central": 8.8,
+      "southwest": 8.5,
+      "northwest": 9.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "粉条",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 9,
+    "regions": {
+      "national": 9,
+      "north": 8.6,
+      "east": 10.1,
+      "south": 9.7,
+      "central": 8.8,
+      "southwest": 8.5,
+      "northwest": 9.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "腐乳汁",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 16,
+    "regions": {
+      "national": 16,
+      "north": 15.4,
+      "east": 17.9,
+      "south": 17.3,
+      "central": 15.7,
+      "southwest": 15,
+      "northwest": 16.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "腐竹",
+    "category": "蛋奶豆制品",
+    "unit": "kg",
+    "nationalAvg": 28,
+    "regions": {
+      "national": 28,
+      "north": 26.9,
+      "east": 31.4,
+      "south": 30.2,
+      "central": 27.4,
+      "southwest": 26.3,
+      "northwest": 28.8
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "干辣椒",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 38,
+    "regions": {
+      "national": 38,
+      "north": 36.5,
+      "east": 42.6,
+      "south": 41,
+      "central": 37.2,
+      "southwest": 35.7,
+      "northwest": 39.1
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "高汤",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "枸杞",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 80,
+    "regions": {
+      "national": 80,
+      "north": 76.8,
+      "east": 89.6,
+      "south": 86.4,
+      "central": 78.4,
+      "southwest": 75.2,
+      "northwest": 82.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鳜鱼",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 88,
+    "regions": {
+      "national": 88,
+      "north": 84.5,
+      "east": 98.6,
+      "south": 95,
+      "central": 86.2,
+      "southwest": 82.7,
+      "northwest": 90.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "海带",
+    "category": "菌菇干货",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "海蛎",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 36,
+    "regions": {
+      "national": 36,
+      "north": 34.6,
+      "east": 40.3,
+      "south": 38.9,
+      "central": 35.3,
+      "southwest": 33.8,
+      "northwest": 37.1
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "蚝油",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "黑胡椒",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 90,
+    "regions": {
+      "national": 90,
+      "north": 86.4,
+      "east": 100.8,
+      "south": 97.2,
+      "central": 88.2,
+      "southwest": 84.6,
+      "northwest": 92.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "红椒",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 9,
+    "regions": {
+      "national": 9,
+      "north": 8.6,
+      "east": 10.1,
+      "south": 9.7,
+      "central": 8.8,
+      "southwest": 8.5,
+      "northwest": 9.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "胡辣汤料",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 20,
+    "regions": {
+      "national": 20,
+      "north": 19.2,
+      "east": 22.4,
+      "south": 21.6,
+      "central": 19.6,
+      "southwest": 18.8,
+      "northwest": 20.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "胡萝卜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 4.5,
+    "regions": {
+      "national": 4.5,
+      "north": 4.3,
+      "east": 5,
+      "south": 4.9,
+      "central": 4.4,
+      "southwest": 4.2,
+      "northwest": 4.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "花蛤",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "花椒",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 90,
+    "regions": {
+      "national": 90,
+      "north": 86.4,
+      "east": 100.8,
+      "south": 97.2,
+      "central": 88.2,
+      "southwest": 84.6,
+      "northwest": 92.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "花生",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "黄豆",
+    "category": "蛋奶豆制品",
+    "unit": "kg",
+    "nationalAvg": 9,
+    "regions": {
+      "national": 9,
+      "north": 8.6,
+      "east": 10.1,
+      "south": 9.7,
+      "central": 8.8,
+      "southwest": 8.5,
+      "northwest": 9.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "黄瓜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "黄牛肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 68,
+    "regions": {
+      "national": 68,
+      "north": 65.3,
+      "east": 76.2,
+      "south": 73.4,
+      "central": 66.6,
+      "southwest": 63.9,
+      "northwest": 70
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "火腿",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 38,
+    "regions": {
+      "national": 38,
+      "north": 36.5,
+      "east": 42.6,
+      "south": 41,
+      "central": 37.2,
+      "southwest": 35.7,
+      "northwest": 39.1
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鸡翅",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 32,
+    "regions": {
+      "national": 32,
+      "north": 30.7,
+      "east": 35.8,
+      "south": 34.6,
+      "central": 31.4,
+      "southwest": 30.1,
+      "northwest": 33
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鸡蛋",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 11,
+    "regions": {
+      "national": 11,
+      "north": 10.6,
+      "east": 12.3,
+      "south": 11.9,
+      "central": 10.8,
+      "southwest": 10.3,
+      "northwest": 11.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鸡块",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 22,
+    "regions": {
+      "national": 22,
+      "north": 21.1,
+      "east": 24.6,
+      "south": 23.8,
+      "central": 21.6,
+      "southwest": 20.7,
+      "northwest": 22.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鸡丝",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 32,
+    "regions": {
+      "national": 32,
+      "north": 30.7,
+      "east": 35.8,
+      "south": 34.6,
+      "central": 31.4,
+      "southwest": 30.1,
+      "northwest": 33
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鸡腿",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 24,
+    "regions": {
+      "national": 24,
+      "north": 23,
+      "east": 26.9,
+      "south": 25.9,
+      "central": 23.5,
+      "southwest": 22.6,
+      "northwest": 24.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鸡腿肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 24,
+    "regions": {
+      "national": 24,
+      "north": 23,
+      "east": 26.9,
+      "south": 25.9,
+      "central": 23.5,
+      "southwest": 22.6,
+      "northwest": 24.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鸡胸肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 22,
+    "regions": {
+      "national": 22,
+      "north": 21.1,
+      "east": 24.6,
+      "south": 23.8,
+      "central": 21.6,
+      "southwest": 20.7,
+      "northwest": 22.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "茄子",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "碱水面",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "姜",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "姜葱",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "姜末",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "姜片",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "姜丝",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "姜蒜",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "酱料",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 16,
+    "regions": {
+      "national": 16,
+      "north": 15.4,
+      "east": 17.9,
+      "south": 17.3,
+      "central": 15.7,
+      "southwest": 15,
+      "northwest": 16.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "酱油",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "金枪鱼",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 46,
+    "regions": {
+      "national": 46,
+      "north": 44.2,
+      "east": 51.5,
+      "south": 49.7,
+      "central": 45.1,
+      "southwest": 43.2,
+      "northwest": 47.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "韭菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 9,
+    "regions": {
+      "national": 9,
+      "north": 8.6,
+      "east": 10.1,
+      "south": 9.7,
+      "central": 8.8,
+      "southwest": 8.5,
+      "northwest": 9.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "菌菇",
+    "category": "菌菇干货",
+    "unit": "kg",
+    "nationalAvg": 22,
+    "regions": {
+      "national": 22,
+      "north": 21.1,
+      "east": 24.6,
+      "south": 23.8,
+      "central": 21.6,
+      "southwest": 20.7,
+      "northwest": 22.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "可乐",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 4,
+    "regions": {
+      "national": 4,
+      "north": 3.8,
+      "east": 4.5,
+      "south": 4.3,
+      "central": 3.9,
+      "southwest": 3.8,
+      "northwest": 4.1
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "空心菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "宽面",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "蓝莓",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 60,
+    "regions": {
+      "national": 60,
+      "north": 57.6,
+      "east": 67.2,
+      "south": 64.8,
+      "central": 58.8,
+      "southwest": 56.4,
+      "northwest": 61.8
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "肋排",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 52,
+    "regions": {
+      "national": 52,
+      "north": 49.9,
+      "east": 58.2,
+      "south": 56.2,
+      "central": 51,
+      "southwest": 48.9,
+      "northwest": 53.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "里脊肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 38,
+    "regions": {
+      "national": 38,
+      "north": 36.5,
+      "east": 42.6,
+      "south": 41,
+      "central": 37.2,
+      "southwest": 35.7,
+      "northwest": 39.1
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "莲藕",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 9,
+    "regions": {
+      "national": 9,
+      "north": 8.6,
+      "east": 10.1,
+      "south": 9.7,
+      "central": 8.8,
+      "southwest": 8.5,
+      "northwest": 9.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "龙井茶",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 360,
+    "regions": {
+      "national": 360,
+      "north": 345.6,
+      "east": 403.2,
+      "south": 388.8,
+      "central": 352.8,
+      "southwest": 338.4,
+      "northwest": 370.8
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鲈鱼",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 46,
+    "regions": {
+      "national": 46,
+      "north": 44.2,
+      "east": 51.5,
+      "south": 49.7,
+      "central": 45.1,
+      "southwest": 43.2,
+      "northwest": 47.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "卤牛肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 68,
+    "regions": {
+      "national": 68,
+      "north": 65.3,
+      "east": 76.2,
+      "south": 73.4,
+      "central": 66.6,
+      "southwest": 63.9,
+      "northwest": 70
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "卤肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 42,
+    "regions": {
+      "national": 42,
+      "north": 40.3,
+      "east": 47,
+      "south": 45.4,
+      "central": 41.2,
+      "southwest": 39.5,
+      "northwest": 43.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "绿豆面",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 9,
+    "regions": {
+      "national": 9,
+      "north": 8.6,
+      "east": 10.1,
+      "south": 9.7,
+      "central": 8.8,
+      "southwest": 8.5,
+      "northwest": 9.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "绿豆芽",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 4.8,
+    "regions": {
+      "national": 4.8,
+      "north": 4.6,
+      "east": 5.4,
+      "south": 5.2,
+      "central": 4.7,
+      "southwest": 4.5,
+      "northwest": 4.9
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "萝卜丁",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "米饭",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 5.5,
+    "regions": {
+      "national": 5.5,
+      "north": 5.3,
+      "east": 6.2,
+      "south": 5.9,
+      "central": 5.4,
+      "southwest": 5.2,
+      "northwest": 5.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "米粉",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "米浆",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "米线",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "面筋",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "馍",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "木耳",
+    "category": "菌菇干货",
+    "unit": "kg",
+    "nationalAvg": 48,
+    "regions": {
+      "national": 48,
+      "north": 46.1,
+      "east": 53.8,
+      "south": 51.8,
+      "central": 47,
+      "southwest": 45.1,
+      "northwest": 49.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "嫩豆腐",
+    "category": "蛋奶豆制品",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "牛里脊",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 72,
+    "regions": {
+      "national": 72,
+      "north": 69.1,
+      "east": 80.6,
+      "south": 77.8,
+      "central": 70.6,
+      "southwest": 67.7,
+      "northwest": 74.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "牛奶",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "牛腩",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 58,
+    "regions": {
+      "national": 58,
+      "north": 55.7,
+      "east": 65,
+      "south": 62.6,
+      "central": 56.8,
+      "southwest": 54.5,
+      "northwest": 59.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "牛肉丁",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 68,
+    "regions": {
+      "national": 68,
+      "north": 65.3,
+      "east": 76.2,
+      "south": 73.4,
+      "central": 66.6,
+      "southwest": 63.9,
+      "northwest": 70
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "牛肉粒",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 68,
+    "regions": {
+      "national": 68,
+      "north": 65.3,
+      "east": 76.2,
+      "south": 73.4,
+      "central": 66.6,
+      "southwest": 63.9,
+      "northwest": 70
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "牛肉末",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 68,
+    "regions": {
+      "national": 68,
+      "north": 65.3,
+      "east": 76.2,
+      "south": 73.4,
+      "central": 66.6,
+      "southwest": 63.9,
+      "northwest": 70
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "牛肉片",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 68,
+    "regions": {
+      "national": 68,
+      "north": 65.3,
+      "east": 76.2,
+      "south": 73.4,
+      "central": 66.6,
+      "southwest": 63.9,
+      "northwest": 70
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "糯米",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "排骨",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 46,
+    "regions": {
+      "national": 46,
+      "north": 44.2,
+      "east": 51.5,
+      "south": 49.7,
+      "central": 45.1,
+      "southwest": 43.2,
+      "northwest": 47.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "泡椒",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 16,
+    "regions": {
+      "national": 16,
+      "north": 15.4,
+      "east": 17.9,
+      "south": 17.3,
+      "central": 15.7,
+      "southwest": 15,
+      "northwest": 16.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "皮蛋",
+    "category": "蛋奶豆制品",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "荞麦面",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "芹菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "青菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 6.5,
+    "regions": {
+      "national": 6.5,
+      "north": 6.2,
+      "east": 7.3,
+      "south": 7,
+      "central": 6.4,
+      "southwest": 6.1,
+      "northwest": 6.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "青豆",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "青红椒",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 9,
+    "regions": {
+      "national": 9,
+      "north": 8.6,
+      "east": 10.1,
+      "south": 9.7,
+      "central": 8.8,
+      "southwest": 8.5,
+      "northwest": 9.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "青椒",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "青蒜",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "秋葵",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "肉包",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "肉末",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 32,
+    "regions": {
+      "national": 32,
+      "north": 30.7,
+      "east": 35.8,
+      "south": 34.6,
+      "central": 31.4,
+      "southwest": 30.1,
+      "northwest": 33
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "肉松",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 58,
+    "regions": {
+      "national": 58,
+      "north": 55.7,
+      "east": 65,
+      "south": 62.6,
+      "central": 56.8,
+      "southwest": 54.5,
+      "northwest": 59.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "肉馅",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 32,
+    "regions": {
+      "national": 32,
+      "north": 30.7,
+      "east": 35.8,
+      "south": 34.6,
+      "central": 31.4,
+      "southwest": 30.1,
+      "northwest": 33
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "三黄鸡",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 26,
+    "regions": {
+      "national": 26,
+      "north": 25,
+      "east": 29.1,
+      "south": 28.1,
+      "central": 25.5,
+      "southwest": 24.4,
+      "northwest": 26.8
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "三七",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 220,
+    "regions": {
+      "national": 220,
+      "north": 211.2,
+      "east": 246.4,
+      "south": 237.6,
+      "central": 215.6,
+      "southwest": 206.8,
+      "northwest": 226.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "沙姜酱",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "山药",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "上海青",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 7.5,
+    "regions": {
+      "national": 7.5,
+      "north": 7.2,
+      "east": 8.4,
+      "south": 8.1,
+      "central": 7.4,
+      "southwest": 7.1,
+      "northwest": 7.7
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "生菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "生抽",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "瘦肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 34,
+    "regions": {
+      "national": 34,
+      "north": 32.6,
+      "east": 38.1,
+      "south": 36.7,
+      "central": 33.3,
+      "southwest": 32,
+      "northwest": 35
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "瘦猪肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 34,
+    "regions": {
+      "national": 34,
+      "north": 32.6,
+      "east": 38.1,
+      "south": 36.7,
+      "central": 33.3,
+      "southwest": 32,
+      "northwest": 35
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "酸笋",
+    "category": "菌菇干货",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "酸汤",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "蒜",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "蒜苗",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "蒜蓉",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "笋丁",
+    "category": "菌菇干货",
+    "unit": "kg",
+    "nationalAvg": 16,
+    "regions": {
+      "national": 16,
+      "north": 15.4,
+      "east": 17.9,
+      "south": 17.3,
+      "central": 15.7,
+      "southwest": 15,
+      "northwest": 16.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "笋干",
+    "category": "菌菇干货",
+    "unit": "kg",
+    "nationalAvg": 68,
+    "regions": {
+      "national": 68,
+      "north": 65.3,
+      "east": 76.2,
+      "south": 73.4,
+      "central": 66.6,
+      "southwest": 63.9,
+      "northwest": 70
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "土豆",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 4,
+    "regions": {
+      "national": 4,
+      "north": 3.8,
+      "east": 4.5,
+      "south": 4.3,
+      "central": 3.9,
+      "southwest": 3.8,
+      "northwest": 4.1
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "土鸡",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 38,
+    "regions": {
+      "national": 38,
+      "north": 36.5,
+      "east": 42.6,
+      "south": 41,
+      "central": 37.2,
+      "southwest": 35.7,
+      "northwest": 39.1
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "丸子汤",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "莴笋",
+    "category": "菌菇干货",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "五花肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 34,
+    "regions": {
+      "national": 34,
+      "north": 32.6,
+      "east": 38.1,
+      "south": 36.7,
+      "central": 33.3,
+      "southwest": 32,
+      "northwest": 35
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "武昌鱼",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 30,
+    "regions": {
+      "national": 30,
+      "north": 28.8,
+      "east": 33.6,
+      "south": 32.4,
+      "central": 29.4,
+      "southwest": 28.2,
+      "northwest": 30.9
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "西葫芦",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "西兰花",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 13,
+    "regions": {
+      "national": 13,
+      "north": 12.5,
+      "east": 14.6,
+      "south": 14,
+      "central": 12.7,
+      "southwest": 12.2,
+      "northwest": 13.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "虾皮",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 42,
+    "regions": {
+      "national": 42,
+      "north": 40.3,
+      "east": 47,
+      "south": 45.4,
+      "central": 41.2,
+      "southwest": 39.5,
+      "northwest": 43.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "虾仁",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 68,
+    "regions": {
+      "national": 68,
+      "north": 65.3,
+      "east": 76.2,
+      "south": 73.4,
+      "central": 66.6,
+      "southwest": 63.9,
+      "northwest": 70
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "咸菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "香菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 16,
+    "regions": {
+      "national": 16,
+      "north": 15.4,
+      "east": 17.9,
+      "south": 17.3,
+      "central": 15.7,
+      "southwest": 15,
+      "northwest": 16.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "香醋",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "香菇",
+    "category": "菌菇干货",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "小菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "小葱",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 10,
+    "regions": {
+      "national": 10,
+      "north": 9.6,
+      "east": 11.2,
+      "south": 10.8,
+      "central": 9.8,
+      "southwest": 9.4,
+      "northwest": 10.3
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "小米",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "小米辣",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "燕麦",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 16,
+    "regions": {
+      "national": 16,
+      "north": 15.4,
+      "east": 17.9,
+      "south": 17.3,
+      "central": 15.7,
+      "southwest": 15,
+      "northwest": 16.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "燕麦米",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 16,
+    "regions": {
+      "national": 16,
+      "north": 15.4,
+      "east": 17.9,
+      "south": 17.3,
+      "central": 15.7,
+      "southwest": 15,
+      "northwest": 16.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "羊肉",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 72,
+    "regions": {
+      "national": 72,
+      "north": 69.1,
+      "east": 80.6,
+      "south": 77.8,
+      "central": 70.6,
+      "southwest": 67.7,
+      "northwest": 74.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "羊肉汤",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 72,
+    "regions": {
+      "national": 72,
+      "north": 69.1,
+      "east": 80.6,
+      "south": 77.8,
+      "central": 70.6,
+      "southwest": 67.7,
+      "northwest": 74.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "洋葱",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "油菜",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "油馍头",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "油条",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "油条碎",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "鱼头",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 34,
+    "regions": {
+      "national": 34,
+      "north": 32.6,
+      "east": 38.1,
+      "south": 36.7,
+      "central": 33.3,
+      "southwest": 32,
+      "northwest": 35
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "玉米",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "玉米粒",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 6,
+    "regions": {
+      "national": 6,
+      "north": 5.8,
+      "east": 6.7,
+      "south": 6.5,
+      "central": 5.9,
+      "southwest": 5.6,
+      "northwest": 6.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "芋头",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 7,
+    "regions": {
+      "national": 7,
+      "north": 6.7,
+      "east": 7.8,
+      "south": 7.6,
+      "central": 6.9,
+      "southwest": 6.6,
+      "northwest": 7.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "杂粮面",
+    "category": "粮油主食",
+    "unit": "kg",
+    "nationalAvg": 8,
+    "regions": {
+      "national": 8,
+      "north": 7.7,
+      "east": 9,
+      "south": 8.6,
+      "central": 7.8,
+      "southwest": 7.5,
+      "northwest": 8.2
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "榨菜",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 12,
+    "regions": {
+      "national": 12,
+      "north": 11.5,
+      "east": 13.4,
+      "south": 13,
+      "central": 11.8,
+      "southwest": 11.3,
+      "northwest": 12.4
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "蘸水",
+    "category": "蔬菜水果",
+    "unit": "kg",
+    "nationalAvg": 20,
+    "regions": {
+      "national": 20,
+      "north": 19.2,
+      "east": 22.4,
+      "south": 21.6,
+      "central": 19.6,
+      "southwest": 18.8,
+      "northwest": 20.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "榛蘑",
+    "category": "菌菇干货",
+    "unit": "kg",
+    "nationalAvg": 86,
+    "regions": {
+      "national": 86,
+      "north": 82.6,
+      "east": 96.3,
+      "south": 92.9,
+      "central": 84.3,
+      "southwest": 80.8,
+      "northwest": 88.6
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "蒸鱼豉油",
+    "category": "水产类",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "芝麻酱",
+    "category": "调味辅料",
+    "unit": "kg",
+    "nationalAvg": 18,
+    "regions": {
+      "national": 18,
+      "north": 17.3,
+      "east": 20.2,
+      "south": 19.4,
+      "central": 17.6,
+      "southwest": 16.9,
+      "northwest": 18.5
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "猪里脊",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 38,
+    "regions": {
+      "national": 38,
+      "north": 36.5,
+      "east": 42.6,
+      "south": 41,
+      "central": 37.2,
+      "southwest": 35.7,
+      "northwest": 39.1
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "猪肉末",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 32,
+    "regions": {
+      "national": 32,
+      "north": 30.7,
+      "east": 35.8,
+      "south": 34.6,
+      "central": 31.4,
+      "southwest": 30.1,
+      "northwest": 33
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  },
+  {
+    "item": "猪肉馅",
+    "category": "肉禽类",
+    "unit": "kg",
+    "nationalAvg": 32,
+    "regions": {
+      "national": 32,
+      "north": 30.7,
+      "east": 35.8,
+      "south": 34.6,
+      "central": 31.4,
+      "southwest": 30.1,
+      "northwest": 33
+    },
+    "source": "公开价格监测参考：国家统计局50城主要食品均价、农业农村部农产品价格、地方发改委居民食品价格监测；项目内做地区系数标准化估算"
+  }
+];

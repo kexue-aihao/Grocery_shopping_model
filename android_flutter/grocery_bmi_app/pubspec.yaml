@@ -1,0 +1,20 @@
+﻿name: grocery_bmi_app
+description: 买菜 BMI 选购模型 Android Flutter 软件
+publish_to: 'none'
+version: 1.1.0+2
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo.png
+    - assets/data/dishes.json

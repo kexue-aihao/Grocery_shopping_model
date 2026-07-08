@@ -1,0 +1,20 @@
+﻿{
+  "name": "买菜 BMI 选购模型",
+  "short_name": "Grocery BMI",
+  "description": "按 BMI 与预算阶梯生成中晚餐不重复的买菜清单",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f8f2",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "categories": ["food", "health", "lifestyle"],
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="Grocery BMI icon">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#16a34a"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="46" fill="url(#g)"/>
+  <circle cx="96" cy="100" r="58" fill="#ecfdf3" opacity=".94"/>
+  <text x="96" y="126" text-anchor="middle" font-size="76">🥗</text>
+  <path d="M49 46c33-19 74-19 96 0" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".7"/>
+</svg>

@@ -1,0 +1,150 @@
+﻿name: Build Windows and Android Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Release tag, e.g. v1.1.0. Leave empty to use manual-${{ github.run_number }}.'
+        required: false
+        default: ''
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    name: Build Windows desktop software
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build Windows package
+        shell: pwsh
+        run: |
+          npm.cmd run test
+          npm.cmd run build:web
+          npm.cmd run build:windows
+          npm.cmd run verify:windows
+          Compress-Archive -Path dist/software/windows/* -DestinationPath dist/grocery-bmi-windows.zip -Force
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: grocery-bmi-windows
+          path: dist/grocery-bmi-windows.zip
+
+  android:
+    name: Build Android Flutter APK
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: android_flutter/grocery_bmi_app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.24.5'
+          cache: true
+
+      - name: Export shared data
+        working-directory: .
+        run: node scripts/export-data.mjs
+
+      - name: Create Android platform files
+        run: flutter create --platforms=android --org com.grocerybmi --project-name grocery_bmi_app .
+
+      - name: Restore Flutter app sources after platform generation
+        run: git checkout -- pubspec.yaml lib/main.dart analysis_options.yaml assets
+
+      - name: Apply Android launcher logo
+        run: |
+          for density in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
+            mkdir -p android/app/src/main/res/mipmap-$density
+            cp assets/logo.png android/app/src/main/res/mipmap-$density/ic_launcher.png
+          done
+
+      - name: Resolve Flutter dependencies
+        run: flutter pub get
+
+      - name: Analyze Flutter project
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      - name: Build Android APK
+        run: flutter build apk --release
+
+      - name: Collect APK
+        run: |
+          mkdir -p ../../dist/android
+          cp build/app/outputs/flutter-apk/app-release.apk ../../dist/android/grocery-bmi-android.apk
+
+      - name: Upload Android artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: grocery-bmi-android
+          path: dist/android/grocery-bmi-android.apk
+
+  release:
+    name: Create GitHub Release
+    needs: [windows, android]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine release tag
+        id: tag
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          elif [[ -n "${{ github.event.inputs.release_tag }}" ]]; then
+            echo "tag=${{ github.event.inputs.release_tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=manual-${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: Create or update Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag.outputs.tag }}
+          name: Grocery BMI ${{ steps.tag.outputs.tag }}
+          artifacts: 'release-assets/**/*.zip,release-assets/**/*.apk'
+          allowUpdates: true
+          replacesArtifacts: true
+          generateReleaseNotes: true
+          body: |
+            买菜 BMI 选购模型自动构建发布。
+
+            包含：
+            - Windows 桌面软件压缩包：grocery-bmi-windows.zip
+            - Android Flutter APK：grocery-bmi-android.apk
+
+            预算方式：手动输入每日预算生成菜品样式。
+
+
+
