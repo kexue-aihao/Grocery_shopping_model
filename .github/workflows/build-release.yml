@@ -120,6 +120,21 @@ jobs:
           path: |
             android-build.log
             android_flutter/grocery_bmi_app/build/**/*.log
+      - name: Summarize Android build failure
+        if: failure()
+        shell: bash
+        run: |
+          if [[ -f android-build.log ]]; then
+            echo "### Android build failure tail" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            tail -n 120 android-build.log >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            tail -n 120 android-build.log
+            message=$(tail -n 60 android-build.log | sed ':a;N;$!ba;s/%/%25/g;s/\r/%0D/g;s/\n/%0A/g')
+            echo "::error title=Android APK build failed::$message"
+          else
+            echo "::error title=Android APK build failed::android-build.log was not created"
+          fi
 
       - name: Collect APK
         run: |
@@ -174,6 +189,7 @@ jobs:
             - Android Flutter APK：grocery-bmi-android.apk
 
             预算方式：手动输入每日预算生成菜品样式。
+
 
 
 
