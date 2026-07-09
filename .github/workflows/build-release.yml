@@ -72,14 +72,15 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: '3.24.5'
           cache: true
 
       - name: Show Android toolchain
         run: |
           java -version
           flutter --version
-          flutter doctor -v
+          flutter doctor -v || true
+          flutter precache --android
+          yes | flutter doctor --android-licenses || true
 
       - name: Create Android platform files
         working-directory: android_flutter/grocery_bmi_app
@@ -107,7 +108,18 @@ jobs:
 
       - name: Build Android APK
         working-directory: android_flutter/grocery_bmi_app
-        run: flutter build apk --debug
+        run: |
+          set -o pipefail
+          flutter build apk --debug 2>&1 | tee ../../android-build.log
+
+      - name: Upload Android build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build-diagnostics
+          path: |
+            android-build.log
+            android_flutter/grocery_bmi_app/build/**/*.log
 
       - name: Collect APK
         run: |
@@ -162,6 +174,7 @@ jobs:
             - Android Flutter APK：grocery-bmi-android.apk
 
             预算方式：手动输入每日预算生成菜品样式。
+
 
 
 
