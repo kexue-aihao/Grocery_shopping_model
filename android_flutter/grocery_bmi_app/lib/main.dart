@@ -110,7 +110,42 @@ class _Metric extends StatelessWidget { const _Metric(this.label, this.value, th
 class _DayCard extends StatelessWidget { const _DayCard({required this.day, required this.profile}); final DayPlan day; final Profile profile; @override Widget build(BuildContext context) => Card(elevation: 0, color: Colors.white, margin: const EdgeInsets.only(bottom: 12), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)), child: Padding(padding: const EdgeInsets.all(14), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('DAY ${day.day} · 三餐 ¥${day.total.cost.toStringAsFixed(1)} · BMI ${day.total.bmiValue.toStringAsFixed(0)}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900)), _MealBlock('🌅 早餐', day.breakfast, day.breakfastSummary, profile, 'breakfast'), _MealBlock('☀️ 中餐', day.lunch, day.lunchSummary, profile, 'lunch'), _MealBlock('🌙 晚餐', day.dinner, day.dinnerSummary, profile, 'dinner')]))); }
 class _MealBlock extends StatelessWidget { const _MealBlock(this.title, this.dishes, this.summary, this.profile, this.meal); final String title, meal; final List<Dish> dishes; final MealSummary summary; final Profile profile; @override Widget build(BuildContext context) => Container(margin: const EdgeInsets.only(top: 10), padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: const Color(0xFFF9FCF9), borderRadius: BorderRadius.circular(16)), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('$title · ¥${summary.cost.toStringAsFixed(1)} · ${summary.kcal.toStringAsFixed(0)}kcal', style: const TextStyle(fontWeight: FontWeight.w900, color: Color(0xFF16A34A))), for (final d in dishes) _DishTile(d, profile, meal)])); }
 class _DishTile extends StatelessWidget { const _DishTile(this.dish, this.profile, this.meal); final Dish dish; final Profile profile; final String meal; @override Widget build(BuildContext context) => ListTile(contentPadding: EdgeInsets.zero, leading: CircleAvatar(backgroundColor: _color(dish.color).withOpacity(.14), child: Text(dish.icon)), title: Text(dish.name, style: const TextStyle(fontWeight: FontWeight.w900)), subtitle: Text('${dish.style} · ¥${dish.cost.toStringAsFixed(1)} · ${dish.kcal.toStringAsFixed(0)}kcal'), trailing: Chip(label: Text(GroceryModel.calculateDishBmiValue(dish, profile, meal).toStringAsFixed(0)), backgroundColor: const Color(0xFFDCFCE7))); }
-class _ShoppingList extends StatelessWidget { const _ShoppingList({required this.plan}); final BudgetPlan plan; @override Widget build(BuildContext context) => Card(elevation: 0, color: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)), child: Padding(padding: const EdgeInsets.all(14), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('合并购物清单 · ¥${plan.grandTotal.toStringAsFixed(1)}', style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w900)), for (final i in plan.shoppingList) ListTile(contentPadding: EdgeInsets.zero, title: Text(i.name, style: const TextStyle(fontWeight: FontWeight.w800)), subtitle: Text('用于：\ · \ · \kg × ¥\/kg'), trailing: Text('¥\', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.w900))) ]))); }
+class _ShoppingList extends StatelessWidget {
+  const _ShoppingList({required this.plan});
+
+  final BudgetPlan plan;
+
+  @override
+  Widget build(BuildContext context) => Card(
+        elevation: 0,
+        color: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '合并购物清单 · ¥${plan.grandTotal.toStringAsFixed(1)}',
+                style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w900),
+              ),
+              for (final item in plan.shoppingList)
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(item.name, style: const TextStyle(fontWeight: FontWeight.w800)),
+                  subtitle: Text(
+                    '用于：${item.dishes.join(' · ')} · ${item.estimatedKg.toStringAsFixed(3)}kg × ¥${item.unitPrice.toStringAsFixed(1)}/kg',
+                  ),
+                  trailing: Text(
+                    '¥${item.estimatedCost.toStringAsFixed(1)}',
+                    style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.w900),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      );
+}
 class _DishGallery extends StatelessWidget { const _DishGallery({required this.data, required this.profile}); final AppData data; final Profile profile; @override Widget build(BuildContext context) { final list = [...data.dishes]..sort((a,b)=>GroceryModel.calculateDishBmiValue(b, profile, b.meals.first).compareTo(GroceryModel.calculateDishBmiValue(a, profile, a.meals.first))); return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [const Text('全国早中晚餐菜品样式池', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w900)), Wrap(spacing: 8, runSpacing: 8, children: [for (final d in list.take(24)) Chip(avatar: Text(d.icon), label: Text('${d.name} ¥${d.cost.toStringAsFixed(1)}'))])]); }}
 
 Color _color(String hex) { final value = int.tryParse(hex.replaceFirst('#', ''), radix: 16) ?? 0x16A34A; return Color(0xFF000000 | value); }
@@ -138,6 +173,7 @@ class GroceryModel {
   List<Dish> _choose(String meal,double target,Profile p,Set<String> forbid,Map<String,int> used,String region,int seed){final cand=dishes.where((d)=>d.meals.contains(meal)&&!forbid.contains(d.id)).map((d)=>d.withCost(estimateDishCost(d,region))).toList()..sort((a,b)=>(calculateDishBmiValue(b,p,meal)+_r(b,region)).compareTo(calculateDishBmiValue(a,p,meal)+_r(a,region)));final source=cand.take(meal=='breakfast'?24:34).toList();final combos=_combos(source,meal=='breakfast'||target<20?1:2,meal=='breakfast'?1:target>=45?4:target>=22?3:2);var best=<Dish>[];var bestScore=double.negativeInfinity;for(final c in combos){final s=sum(c,p,meal);final score=c.fold(0.0,(v,d)=>v+calculateDishBmiValue(d,p,meal)+_r(d,region)-(used[d.id]??0)*6)-(s.cost-target).abs()*3.2+(seed%9)/10; if(score>bestScore){bestScore=score;best=c;}}return best;}
   double _r(Dish d,String r){if(r=='national')return d.regions.contains('national')?6:2;if(d.regions.contains(r))return 18;return d.regions.contains('national')?8:0;} List<List<Dish>> _combos(List<Dish> items,int min,int max){final res=<List<Dish>>[];void walk(int i,List<Dish> st){if(st.length>=min)res.add([...st]);if(st.length==max)return;for(var x=i;x<items.length;x++){st.add(items[x]);walk(x+1,st);st.removeLast();}}walk(0,[]);return res;} List<ShoppingItem> shopping(List<DayPlan> days,int people,String region){final map=<String,({int count,double kg,double cost,double unit,String category,Set<String> dishes})>{};for(final day in days){for(final d in [...day.breakfast,...day.lunch,...day.dinner]){for(final ing in d.ingredients){final p=priceInfo(ing);final u=unitPrice(ing, region);final q=qty(ing,d)*people;final old=map[ing]??(count:0,kg:0,cost:0,unit:u,category:p.category,dishes:<String>{});old.dishes.add(d.name);map[ing]=(count:old.count+people,kg:old.kg+q,cost:old.cost+u*q,unit:u,category:p.category,dishes:old.dishes);}}}final list=map.entries.map((e)=>ShoppingItem(name:e.key,portions:e.value.count,estimatedKg:round(e.value.kg,3),unitPrice:round(e.value.unit,1),estimatedCost:round(e.value.cost,1),category:e.value.category,dishes:e.value.dishes.take(4).toList())).toList();list.sort((a,b)=>b.estimatedCost.compareTo(a.estimatedCost));return list;}
 }
+
 
 
 
