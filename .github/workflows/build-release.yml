@@ -62,12 +62,24 @@ jobs:
       - name: Export shared data
         run: node scripts/export-data.mjs
 
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
           flutter-version: '3.24.5'
           cache: true
+
+      - name: Show Android toolchain
+        run: |
+          java -version
+          flutter --version
+          flutter doctor -v
 
       - name: Create Android platform files
         working-directory: android_flutter/grocery_bmi_app
@@ -150,5 +162,6 @@ jobs:
             - Android Flutter APK：grocery-bmi-android.apk
 
             预算方式：手动输入每日预算生成菜品样式。
+
 
 
